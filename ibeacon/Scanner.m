@@ -8,8 +8,7 @@
 
 #import "Scanner.h"
 #import "ScanItem.h"
-
-
+#import "Macros.h"
 
 @implementation Scanner
 

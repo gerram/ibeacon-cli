@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B531297718CDF6D70061DC89 /* Broadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = B531297618CDF6D70061DC89 /* Broadcaster.m */; };
+		B591DC6718CDF0620059945B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B591DC6618CDF0620059945B /* Foundation.framework */; };
+		B591DC6A18CDF0620059945B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B591DC6918CDF0620059945B /* main.m */; };
+		B591DC6E18CDF0620059945B /* ibeacon.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = B591DC6D18CDF0620059945B /* ibeacon.1 */; };
+		B591DC7518CDF0BC0059945B /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B591DC7418CDF0BC0059945B /* IOBluetooth.framework */; };
+		B591DC7B18CDF1070059945B /* ScanItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B591DC7818CDF1070059945B /* ScanItem.m */; };
+		B591DC7C18CDF1070059945B /* Scanner.m in Sources */ = {isa = PBXBuildFile; fileRef = B591DC7A18CDF1070059945B /* Scanner.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B591DC6118CDF0620059945B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				B591DC6E18CDF0620059945B /* ibeacon.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B531297518CDF6D70061DC89 /* Broadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Broadcaster.h; sourceTree = "<group>"; };
+		B531297618CDF6D70061DC89 /* Broadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Broadcaster.m; sourceTree = "<group>"; };
+		B591DC6318CDF0620059945B /* ibeacon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ibeacon; sourceTree = BUILT_PRODUCTS_DIR; };
+		B591DC6618CDF0620059945B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B591DC6918CDF0620059945B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B591DC6C18CDF0620059945B /* ibeacon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ibeacon-Prefix.pch"; sourceTree = "<group>"; };
+		B591DC6D18CDF0620059945B /* ibeacon.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ibeacon.1; sourceTree = "<group>"; };
+		B591DC7418CDF0BC0059945B /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
+		B591DC7618CDF1070059945B /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		B591DC7718CDF1070059945B /* ScanItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanItem.h; sourceTree = "<group>"; };
+		B591DC7818CDF1070059945B /* ScanItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanItem.m; sourceTree = "<group>"; };
+		B591DC7918CDF1070059945B /* Scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scanner.h; sourceTree = "<group>"; };
+		B591DC7A18CDF1070059945B /* Scanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scanner.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B591DC6018CDF0620059945B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B591DC7518CDF0BC0059945B /* IOBluetooth.framework in Frameworks */,
+				B591DC6718CDF0620059945B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B591DC5A18CDF0620059945B = {
+			isa = PBXGroup;
+			children = (
+				B591DC6818CDF0620059945B /* ibeacon */,
+				B591DC6518CDF0620059945B /* Frameworks */,
+				B591DC6418CDF0620059945B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B591DC6418CDF0620059945B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B591DC6318CDF0620059945B /* ibeacon */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B591DC6518CDF0620059945B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B591DC7418CDF0BC0059945B /* IOBluetooth.framework */,
+				B591DC6618CDF0620059945B /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B591DC6818CDF0620059945B /* ibeacon */ = {
+			isa = PBXGroup;
+			children = (
+				B591DC7618CDF1070059945B /* Macros.h */,
+				B591DC7718CDF1070059945B /* ScanItem.h */,
+				B591DC7818CDF1070059945B /* ScanItem.m */,
+				B591DC7918CDF1070059945B /* Scanner.h */,
+				B591DC7A18CDF1070059945B /* Scanner.m */,
+				B591DC6918CDF0620059945B /* main.m */,
+				B591DC6D18CDF0620059945B /* ibeacon.1 */,
+				B591DC6B18CDF0620059945B /* Supporting Files */,
+				B531297518CDF6D70061DC89 /* Broadcaster.h */,
+				B531297618CDF6D70061DC89 /* Broadcaster.m */,
+			);
+			path = ibeacon;
+			sourceTree = "<group>";
+		};
+		B591DC6B18CDF0620059945B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B591DC6C18CDF0620059945B /* ibeacon-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B591DC6218CDF0620059945B /* ibeacon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B591DC7118CDF0620059945B /* Build configuration list for PBXNativeTarget "ibeacon" */;
+			buildPhases = (
+				B591DC5F18CDF0620059945B /* Sources */,
+				B591DC6018CDF0620059945B /* Frameworks */,
+				B591DC6118CDF0620059945B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ibeacon;
+			productName = ibeacon;
+			productReference = B591DC6318CDF0620059945B /* ibeacon */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B591DC5B18CDF0620059945B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = RadiusNetworks;
+			};
+			buildConfigurationList = B591DC5E18CDF0620059945B /* Build configuration list for PBXProject "ibeacon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B591DC5A18CDF0620059945B;
+			productRefGroup = B591DC6418CDF0620059945B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B591DC6218CDF0620059945B /* ibeacon */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B591DC5F18CDF0620059945B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B591DC7C18CDF1070059945B /* Scanner.m in Sources */,
+				B591DC6A18CDF0620059945B /* main.m in Sources */,
+				B531297718CDF6D70061DC89 /* Broadcaster.m in Sources */,
+				B591DC7B18CDF1070059945B /* ScanItem.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B591DC6F18CDF0620059945B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B591DC7018CDF0620059945B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B591DC7218CDF0620059945B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ibeacon/ibeacon-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B591DC7318CDF0620059945B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ibeacon/ibeacon-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B591DC5E18CDF0620059945B /* Build configuration list for PBXProject "ibeacon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B591DC6F18CDF0620059945B /* Debug */,
+				B591DC7018CDF0620059945B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B591DC7118CDF0620059945B /* Build configuration list for PBXNativeTarget "ibeacon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B591DC7218CDF0620059945B /* Debug */,
+				B591DC7318CDF0620059945B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B591DC5B18CDF0620059945B /* Project object */;
+}
