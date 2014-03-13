@@ -1,16 +1,12 @@
 //
-//  main.m
-//  scanbeacon
-//
-//  Created by Christopher Sexton on 3/7/14.
 //  Copyright (c) 2014 RadiusNetworks. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <getopt.h>
 
+#import <Foundation/Foundation.h>
 #import "Scanner.h"
 #import "Broadcaster.h"
 #import "Macros.h"
@@ -23,9 +19,19 @@ static void sigint(const int signum) {
 void print_usage() {
     printf("ibeacon: iBeacon command line utility\n");
     printf("\n");
-    printf("       -h  --help             Display this message.\n");
-    printf("       -s  --scan             Scan for iBeacons.\n");
-    printf("       -i  --interval         Time interval in seconds\n");
+    printf("      -h  --help             Display this message\n");
+    printf("      -s  --scan             Scan for iBeacons\n");
+    printf("      -b  --broadcast        Broadcast as an iBeacon\n");
+    printf("\n");
+    printf("    Scan options:\n");
+    printf("      -i  --interval         Time interval in seconds\n");
+    printf("\n");
+    printf("    Broadcast options:\n");
+    printf("      -i  --uuid             Proximity UUID\n");
+    printf("      -M  --major            Major Identifier\n");
+    printf("      -m  --minor            Minor Identifier\n");
+    printf("      -p  --power            Advertised Power\n");
+
 }
 
 int main(int argc, char * argv[]) {

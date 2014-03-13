@@ -1,8 +1,4 @@
 //
-//  Scanner.h
-//  scanbeacon
-//
-//  Created by Christopher Sexton on 3/8/14.
 //  Copyright (c) 2014 RadiusNetworks. All rights reserved.
 //
 

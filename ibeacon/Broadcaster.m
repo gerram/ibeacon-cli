@@ -1,8 +1,4 @@
 //
-//  Broadcaster.m
-//  ibeacon
-//
-//  Created by Christopher Sexton on 3/10/14.
 //  Copyright (c) 2014 RadiusNetworks. All rights reserved.
 //
 
@@ -24,8 +20,10 @@
 {
 
     // generate the key
-    NSData *keyData = [[NSData alloc] initWithBase64EncodedString:@"a0NCQWR2RGF0YUFwcGxlQmVhY29uS2V5" options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    NSString *key = [[NSString alloc] initWithData:keyData encoding:NSUTF8StringEncoding];
+    NSData *keyData = [[NSData alloc] initWithBase64EncodedString:@"a0NCQWR2RGF0YUFwcGxlQmVhY29uS2V5"
+                                                          options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSString *key = [[NSString alloc] initWithData:keyData
+                                          encoding:NSUTF8StringEncoding];
 
     self.peripheralData = [self peripheralDataWithUUID:uuid
                                                  major:major

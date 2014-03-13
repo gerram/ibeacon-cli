@@ -1,8 +1,4 @@
 //
-//  Broadcaster.h
-//  ibeacon
-//
-//  Created by Christopher Sexton on 3/10/14.
 //  Copyright (c) 2014 RadiusNetworks. All rights reserved.
 //
 
@@ -14,6 +10,9 @@
 @property CBPeripheralManager* manager;
 @property NSDictionary *peripheralData;
 
-- (void)startAdvertisingWithUUID:(NSString *)uuid major:(NSInteger)major minor:(NSInteger)minor power:(NSInteger)power;
+- (void)startAdvertisingWithUUID:(NSString *)uuid
+                           major:(NSInteger)major
+                           minor:(NSInteger)minor
+                           power:(NSInteger)power;
 
 @end
