@@ -53,6 +53,6 @@ Scanning:
 
 # License
 
-Copyright (c) 2014 by Radius Networks
+Copyright &copy; 2014 by Radius Networks
 
 This software is licensed under an adapted BSD license, the Attribution Assurance License.  See the [LICENSE](LICENSE) for details.
