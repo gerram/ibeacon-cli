@@ -18,24 +18,24 @@ Broadcasting iBeacon UUID: 2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6, Major: 100, Min
 Scanning:
 
 ```
-% scanbeacon --scan
+% ibeacon --scan
 {ranged: []}
-{entered: { uuid: "EE23D392-60B6-4CAE-91DC-7CA1D28F4198", major: 1, minor: 1, rssi: -61, power: -66 }}
-{ranged: [{ uuid: "EE23D392-60B6-4CAE-91DC-7CA1D28F4198", major: 1, minor: 1, rssi: -61, power: -66 }]}
-{ranged: [{ uuid: "EE23D392-60B6-4CAE-91DC-7CA1D28F4198", major: 1, minor: 1, rssi: 0, power: -66 }]}
-{entered: { uuid: "EE23D392-60B6-4CAE-91DC-7CA1D28F4198", major: 9, minor: 8, rssi: -34, power: -7 }}
-{ranged: [{ uuid: "EE23D392-60B6-4CAE-91DC-7CA1D28F4198", major: 1, minor: 1, rssi: -61, power: -66 },
-          { uuid: "EE23D392-60B6-4CAE-91DC-7CA1D28F4198", major: 9, minor: 8, rssi: -34, power: -7 }]}
-{ranged: [{ uuid: "EE23D392-60B6-4CAE-91DC-7CA1D28F4198", major: 1, minor: 1, rssi: 0, power: -66 },
-          { uuid: "EE23D392-60B6-4CAE-91DC-7CA1D28F4198", major: 9, minor: 8, rssi: 0, power: -7 }]}
-{ranged: [{ uuid: "EE23D392-60B6-4CAE-91DC-7CA1D28F4198", major: 1, minor: 1, rssi: -63, power: -66 },
-          { uuid: "EE23D392-60B6-4CAE-91DC-7CA1D28F4198", major: 9, minor: 8, rssi: 0, power: -7 }]}
-{exited: { uuid: "EE23D392-60B6-4CAE-91DC-7CA1D28F4198", major: 9, minor: 8, rssi: 0, power: -7 }}
-{ranged: [{ uuid: "EE23D392-60B6-4CAE-91DC-7CA1D28F4198", major: 1, minor: 1, rssi: -94, power: -66 }]}
+{entered: { uuid: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6", major: 1, minor: 1, rssi: -61}}
+{ranged: [{ uuid: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6", major: 1, minor: 1, rssi: -61}]}
+{ranged: [{ uuid: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6", major: 1, minor: 1, rssi: 0}]}
+{entered: { uuid: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6", major: 9, minor: 8, rssi: -34}}
+{ranged: [{ uuid: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6", major: 1, minor: 1, rssi: -61},
+          { uuid: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6", major: 9, minor: 8, rssi: -34}]}
+{ranged: [{ uuid: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6", major: 1, minor: 1, rssi: 0},
+          { uuid: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6", major: 9, minor: 8, rssi: 0}]}
+{ranged: [{ uuid: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6", major: 1, minor: 1, rssi: -63},
+          { uuid: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6", major: 9, minor: 8, rssi: 0}]}
+{exited:  { uuid: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6", major: 9, minor: 8, rssi: 0}}
+{ranged: [{ uuid: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6", major: 1, minor: 1, rssi: -94}]}
 ```
 
 # License
 
 Copyright (c) 2014 by Radius Networks
 
-This software is licensed under an adapted BSD license, the Attribution Assurance License.  See the [LICENSE file](LICENSE) for details.
+This software is licensed under an adapted BSD license, the Attribution Assurance License.  See the [LICENSE](LICENSE) for details.
