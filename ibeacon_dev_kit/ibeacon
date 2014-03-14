@@ -1,0 +1,189 @@
+#!/bin/bash
+# Radius Networks iBeacon Development Kit software (VERSION 2.0)
+# by David G. Young and James Nebeker
+. /boot/ibeacon.conf
+
+BLUETOOTH_DEVICE1="hci0"
+BLUETOOTH_DEVICE2="hci1"
+
+# Converting values from config
+UUID1_NEW=`echo $UUID1 | sed -e 's/\-//g' -e 's/\w\w/& /g'`
+MAJOR1HEX=`printf '%04x\n' $MAJOR1 | sed 's/\w\w/& /'`
+MINOR1HEX=`printf '%04x\n' $MINOR1 | sed 's/\w\w/& /'`
+POWER1HEX=`printf '%04x\n' $POWER1 | sed 's/.*\(..\)/\1/'`
+UUID2_NEW=`echo $UUID2 | sed -e 's/\-//g' -e 's/\w\w/& /g'`
+MAJOR2HEX=`printf '%04x\n' $MAJOR2 | sed 's/\w\w/& /'`
+MINOR2HEX=`printf '%04x\n' $MINOR2 | sed 's/\w\w/& /'`
+POWER2HEX=`printf '%04x\n' $POWER2 | sed 's/.*\(..\)/\1/'`
+FREQUENCY1HEX=`echo "scale=2; (1000 / $BROADCAST_FREQUENCY1) / 0.625" | bc | sed 's/\(.*\)\..*/\1/'`
+FREQUENCY1HEX=`printf '%04X\n' $FREQUENCY1HEX | sed 's/\(..\)\(..\)/\2 \1/'`
+FREQUENCY2HEX=`echo "scale=2; (1000 / $BROADCAST_FREQUENCY2) / 0.625" | bc | sed 's/\(.*\)\..*/\1/'`
+FREQUENCY2HEX=`printf '%04X\n' $FREQUENCY2HEX | sed 's/\(..\)\(..\)/\2 \1/'`
+
+# Validating input
+if [[ ! $UUID1 =~ ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$ ]]; then
+  echo "ERROR IN CONFIG: UUID1 - Invalid UUID format"
+  exit
+fi
+if [ "$MAJOR1" -gt "65535" ] || [ "$MAJOR1" -lt "0"  ]; then
+  echo "ERROR IN CONFIG: MAJOR1 - Major value must be an integer between 0 and 65535"
+  exit
+fi
+if [ "$MINOR1" -gt "65535" ] || [ "$MINOR1" -lt "0"  ]; then
+  echo "ERROR IN CONFIG: MINOR1 - Minor value must be an integer between 0 and 65535"
+  exit
+fi
+if [[ ! $POWER1 =~ ^-[0-9][0-9]?$ ]]; then
+  echo "ERROR IN CONFIG: POWER1 - Calibrated power must be a negative integer between -1 and -99"
+  exit
+fi
+if (( $(echo "$BROADCAST_FREQUENCY1 > 10" | bc -l) )); then
+  echo "ERROR IN CONFIG: BROADCAST_FREQUENCY1 - Maximum allowed broadcast frequency is 10 times per second"
+  exit
+fi
+if (( $(echo "$BROADCAST_FREQUENCY1 < 0.25" | bc -l) )); then
+  echo "ERROR IN CONFIG: BROADCAST_FREQUENCY1 - Minimum allowed broadcast frequency is 0.25 times per second (once every 4 seconds)"
+  exit
+fi
+DUAL_CHECK=`hciconfig | grep $BLUETOOTH_DEVICE2`  # Checking for second bluetooth device
+if [ ! "$DUAL_CHECK" = "" ]; then
+  if [[ ! $UUID2 =~ ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$ ]]; then
+    echo "ERROR IN CONFIG: UUID2 - Invalid UUID format"
+    exit
+  fi
+  if [ "$MAJOR2" -gt "65535" ] || [ "$MAJOR2" -lt "0"  ]; then
+    echo "ERROR IN CONFIG: MAJOR2 - Major value must be an integer between 0 and 65535"
+    exit
+  fi
+  if [ "$MINOR2" -gt "65535" ] || [ "$MINOR2" -lt "0"  ]; then
+    echo "ERROR IN CONFIG: MINOR2 - Minor value must be an integer between 0 and 65535"
+    exit
+  fi
+  if [[ ! $POWER2 =~ ^-[0-9][0-9]?$ ]]; then
+    echo "ERROR IN CONFIG: POWER2 - Calibrated power must be a negative integer between -1 and -99"
+    exit
+  fi
+  if (( $(echo "$BROADCAST_FREQUENCY2 > 10" | bc -l) )); then
+    echo "ERROR IN CONFIG: BROADCAST_FREQUENCY2 - Maximum allowed broadcast frequency is 10 times per second"
+    exit
+  fi
+  if (( $(echo "$BROADCAST_FREQUENCY2 < 0.25" | bc -l) )); then
+    echo "ERROR IN CONFIG: BROADCAST_FREQUENCY2 - Minimum allowed broadcast frequency is 0.25 times per second (once every 4 seconds)"
+    exit
+  fi
+fi
+
+# Checking inputs
+case "$1" in
+  "start")
+    case "$2" in
+      "")
+        do_1=1
+        do_2=`hciconfig | grep $BLUETOOTH_DEVICE2`
+        ;;
+      "1")
+        do_1=1
+        ;;
+      "2")
+        do_2=1
+        ;;
+      *)
+        echo "ERROR: Invalid Input"
+        ;;
+    esac
+    ;;
+  "stop")
+    case "$2" in
+      "")
+        do_3=1
+        do_4=`hciconfig | grep $BLUETOOTH_DEVICE2`
+        ;;
+      "1")
+        do_3=1
+        ;;
+      "2")
+        do_4=1
+        ;;
+      *)
+        echo "ERROR: Invalid Input"
+        ;;
+    esac
+    ;;
+  "scan")
+    cd /home/pi
+    case "$2" in
+      "-b")
+        /home/pi/ibeacon_scan.rb -b
+        ;;
+      *)
+        echo "Scanning for iBeacons..."
+        /home/pi/ibeacon_scan.rb
+        ;;
+    esac
+    ;;
+  "reset")
+    sudo hciconfig $BLUETOOTH_DEVICE1 reset
+    ;;
+  "help")
+    do_5=1
+    ;;
+  *)
+    do_5=1
+    ;;
+esac
+
+if [ "$do_1" ]; then
+  echo "Launching first iBeacon at $BROADCAST_FREQUENCY1 Hz"
+  sudo hciconfig $BLUETOOTH_DEVICE1 reset
+  sudo hciconfig $BLUETOOTH_DEVICE1 up
+  sudo hciconfig $BLUETOOTH_DEVICE1 noleadv
+  sudo hcitool -i $BLUETOOTH_DEVICE1 cmd 0x08 0x0008 1e 02 01 1a 1a ff 4c 00 02 15 $UUID1_NEW $MAJOR1HEX $MINOR1HEX $POWER1HEX 00 00 00 00 00 00 00 00 00 00 00 00 00
+  sudo hcitool -i $BLUETOOTH_DEVICE1 cmd 0x08 0x0006 $FREQUENCY1HEX $FREQUENCY1HEX 03 00 00 00 00 00 00 00 00 07 00
+  sudo hcitool -i $BLUETOOTH_DEVICE1 cmd 0x08 0x000a 01
+  echo "Complete"
+fi
+
+if [ "$do_2" ]; then
+  echo "Launching second iBeacon at $BROADCAST_FREQUENCY2 Hz"
+  sudo hciconfig $BLUETOOTH_DEVICE1 reset
+  sudo hciconfig $BLUETOOTH_DEVICE2 up
+  sudo hciconfig $BLUETOOTH_DEVICE2 noleadv
+  sudo hcitool -i $BLUETOOTH_DEVICE2 cmd 0x08 0x0008 1e 02 01 1a 1a ff 4c 00 02 15 $UUID2_NEW $MAJOR2HEX $MINOR2HEX $POWER2HEX 00 00 00 00 00 00 00 00 00 00 00 00 00
+  sudo hcitool -i $BLUETOOTH_DEVICE2 cmd 0x08 0x0006 $FREQUENCY2HEX $FREQUENCY2HEX 03 00 00 00 00 00 00 00 00 07 00
+  sudo hcitool -i $BLUETOOTH_DEVICE2 cmd 0x08 0x000a 01
+  echo "Complete"
+fi
+
+if [ "$do_3" ]; then
+  echo "Stopping first iBeacon"
+  sudo hciconfig $BLUETOOTH_DEVICE1 noleadv
+  echo "Complete"
+fi
+
+if [ "$do_4" ]; then
+  echo "Stopping second iBeacon"
+  sudo hciconfig $BLUETOOTH_DEVICE2 noleadv
+  echo "Complete"
+fi
+
+if [ "$do_5" ]; then
+  echo "-------------------------------- Radius Networks iBeacon Development Kit ---------------------------------"
+  echo "|                                                                                                        |"
+  echo "|                  To manually start and stop the iBeacon use the following commands:                    |"
+  echo "|                                                                                                        |"
+  echo "|                         $ ibeacon start                 $ ibeacon stop                                 |"
+  echo "|                                                                                                        |"
+  echo "| For the Dual iBeacon model, both iBeacons can be controlled independently with the following commands: |"
+  echo "|                                                                                                        |"
+  echo "|                         $ ibeacon start 1               $ ibeacon stop 1                               |"
+  echo "|                         $ ibeacon start 2               $ ibeacon stop 2                               |"
+  echo "|                                                                                                        |"
+  echo "|     To change iBeacon identifiers and parameters, edit the config file found in the /boot directory    |"
+  echo "|                                                                                                        |"
+  echo "|                   For example run the command:          $ sudo nano /boot/ibeacon.conf                 |"
+  echo "|                                                                                                        |"
+  echo "|          When editing the config file, be sure to restart the iBeacon with the 'start' command,        |"
+  echo "|          otherwise the changes will not take effect                                                    |"
+  echo "|                                                                                                        |"
+  echo "----------------------------------------------------------------------------------------------------------"
+fi
