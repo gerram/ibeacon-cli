@@ -4,6 +4,23 @@ Swiss Army Command Line Utility for working with iBeacons.
 
 ## Usage
 
+```
+ibeacon: iBeacon command line utility
+
+      -h  --help             Display this message
+      -v  --version          Display 'Version 1.0.0'
+      -s  --scan             Scan for iBeacons
+      -b  --broadcast        Broadcast as an iBeacon
+
+    Scan options:
+      -i  --interval         Time interval in seconds
+
+    Broadcast options:
+      -i  --uuid             Proximity UUID
+      -M  --major            Major Identifier
+      -m  --minor            Minor Identifier
+      -p  --power            Advertised Power
+```
 
 
 ### Examples
