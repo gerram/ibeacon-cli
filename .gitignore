@@ -15,7 +15,7 @@
 #########################
 
 # Ignore generate file
-ProximityKit/PKGeneratedVersion.h
+ibeacon/GeneratedVersion.h
 
 #####
 # OS X temporary files that should never be committed

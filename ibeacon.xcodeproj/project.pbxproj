@@ -116,6 +116,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B591DC7118CDF0620059945B /* Build configuration list for PBXNativeTarget "ibeacon" */;
 			buildPhases = (
+				B5CEA9E218D27D4000E2F5C4 /* ShellScript */,
 				B591DC5F18CDF0620059945B /* Sources */,
 				B591DC6018CDF0620059945B /* Frameworks */,
 				B591DC6118CDF0620059945B /* CopyFiles */,
@@ -154,6 +155,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B5CEA9E218D27D4000E2F5C4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "VERSION=$(cat \"$SOURCE_ROOT/VERSION\")\n\necho \"// This is a generated file, do not edit or add to version control\" > \"$SOURCE_ROOT/ibeacon/GeneratedVersion.h\"\necho \"#define VERSION \\\"$VERSION\\\"\" >>                                     \"$SOURCE_ROOT/ibeacon/GeneratedVersion.h\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B591DC5F18CDF0620059945B /* Sources */ = {

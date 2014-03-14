@@ -10,16 +10,21 @@
 #import "Scanner.h"
 #import "Broadcaster.h"
 #import "Macros.h"
+#import "GeneratedVersion.h"
 
 static void sigint(const int signum) {
     printf("\n");
     exit(EXIT_SUCCESS);
 }
 
+void print_version() {
+    printf("Version %s\n", VERSION);
+}
 void print_usage() {
     printf("ibeacon: iBeacon command line utility\n");
     printf("\n");
     printf("      -h  --help             Display this message\n");
+    printf("      -v  --version          Display 'Version %s'\n", VERSION);
     printf("      -s  --scan             Scan for iBeacons\n");
     printf("      -b  --broadcast        Broadcast as an iBeacon\n");
     printf("\n");
@@ -58,11 +63,12 @@ int main(int argc, char * argv[]) {
             {"uuid", required_argument, NULL, 'u'},
             {"power", required_argument, NULL, 'u'},
             {"help", no_argument, NULL, 'h'},
+            {"version", no_argument, NULL, 'v'},
             {NULL, 0, NULL, 0}
         };
 
         int opt = 0;
-        while ((opt = getopt_long(argc, argv, "hsbu:M:m:p:i:", long_options, NULL)) != -1)
+        while ((opt = getopt_long(argc, argv, "hvsbu:M:m:p:i:", long_options, NULL)) != -1)
         {
             // check to see if a single character or long option came through
             switch (opt)
@@ -87,6 +93,10 @@ int main(int argc, char * argv[]) {
                     break;
                 case 'p':
                     power = atoi(optarg);
+                    break;
+                case 'v':
+                    print_version();
+                    exit(EXIT_SUCCESS);
                     break;
                 case 'h':
                     print_usage();
